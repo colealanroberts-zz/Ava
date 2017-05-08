@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="prox">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Prox</title>
+    <base href="/">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.1/css/bulma.css">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            color: white;
+            font-family: 'Roboto';
+            /*background: #18191f;*/
+            background: white;
+        }
+        h1 {
+            color: #41455a;
+            font-size: 24px;
+        }
+        .ava {
+            letter-spacing: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .ava__tagline {
+            font-weight: 100
+        }
+
+        .ui-wrapper {
+            position: relative;
+            top: 40px;
+            width: 968px;
+            margin: 0 auto;
+        }
+
+        .onoffswitch {
+            position: relative; width: 76px;
+            -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+        }
+        .onoffswitch-checkbox {
+            display: none;
+        }
+        .onoffswitch-label {
+            display: block; overflow: hidden; cursor: pointer;
+            border: 2px solid #FFFFFF; border-radius: 50px;
+        }
+        .onoffswitch-inner {
+            display: block; width: 200%; margin-left: -100%;
+            transition: margin 0.3s ease-in 0s;
+        }
+        .onoffswitch-inner:before, .onoffswitch-inner:after {
+            display: block; float: left; width: 50%; height: 23px; padding: 0; line-height: 23px;
+            font-size: 15px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+            box-sizing: border-box;
+        }
+        .onoffswitch-inner:before {
+            content: "ON";
+            padding-left: 10px;
+            background-color: #EEEEEE; color: #34A7C1;
+        }
+        .onoffswitch-inner:after {
+            content: "OFF";
+            padding-right: 10px;
+            background-color: #EEEEEE; color: #999999;
+            text-align: right;
+        }
+        .onoffswitch-switch {
+            display: block; width: 19px; margin: 2px;
+            background: #A1A1A1;
+            position: absolute; top: 0; bottom: 0;
+            right: 49px;
+            border: 2px solid #FFFFFF; border-radius: 50px;
+            transition: all 0.3s ease-in 0s; 
+        }
+        .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+            margin-left: 0;
+        }
+        .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+            right: 0px; 
+            background-color: #34A7C1; 
+        }
+    </style>
+</head>
+<body>
+    <div class="ui-wrapper">
+        <div class="columns">
+            <div class="column is-one-third">
+                <aside class="menu">
+                <h1><span class="ava">Ava</span><span class="ava__tagline">SmartHome</span></h1>
+                <p class="menu-label">
+                    Overview
+                </p>
+                <ul class="menu-list">
+                    <li><a class="is-active">Appliances</a></li>
+                    <li><a>Security</a></li>
+                </ul>
+                <p class="menu-label">
+                    Administration
+                </p>
+                <ul class="menu-list">
+                    <li><a>Control Panel</a></li>
+                    <li><a>Users</a></li>
+                </ul>
+                </aside>
+            </div>
+            <div class="column">
+                <div ui-view></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-resource.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-sanitize.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+    <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+    <script src="js/app.js"></script>
+    <script src="js/vendor/angular-local-storage.js"></script>
+    <script src="js/controllers/home.js"></script>
+    <script src="js/factories/prox.js"></script>
+    <script src="js/factories/dictionary.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.4/socket.io.js"></script>
+</body>
+</html>

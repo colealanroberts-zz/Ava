@@ -1,0 +1,46 @@
+<h2>{{ statusMessage }}</h2>
+<h1 class="title">Appliances</h1>
+<div class="card">
+    <header class="card-header">
+        <p class="card-header-title">
+        Status: {{ statusMessage }}
+        </p>
+    </header>
+    <div class="card-content">
+        <div class="content">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Device ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="appliance in appliances track by $index">
+                        <th>
+                            {{ appliance.name }}
+                        </th>
+                        <td>
+                            <div class="onoffswitch">
+                                <input type="checkbox" name="{{ appliance.id }}" class="onoffswitch-checkbox" id="{{ appliance.id }}" ng-change="stateChange(appliance)" ng-model="appliance.checked" checked>
+                                <label class="onoffswitch-label" for="{{ appliance.id }}">
+                                    <span class="onoffswitch-inner"></span>
+                                    <span class="onoffswitch-switch"></span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>
+                            {{ appliance.id }}
+                        </td>
+                    </tr>
+                </tbody>
+            </div>
+        </div>
+    </div>
+    <!--<footer class="card-footer">
+        <a class="card-footer-item">Save</a>
+        <a class="card-footer-item">Edit</a>
+        <a class="card-footer-item">Delete</a>
+    </footer>-->
+</div>
