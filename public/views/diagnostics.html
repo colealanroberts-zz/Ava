@@ -1,0 +1,56 @@
+<h1 class="title">Developer Diagnostics</h1>
+<div class="level">
+    <div class="control">
+        <div class="field">
+            <label for="" class="label">Search</label>
+            <p class="control">
+                <input type="text" class="input" placeholder="Search logs..." ng-model="diagnosticsLogs">
+            </p>
+        </div>
+    </div>
+</div>
+<div class="columns" ng-repeat="log in logs | orderBy:'-date_created' | filter:diagnosticsLogs">
+    <div class="column">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title">
+                    Matched: <span class="tag" ng-class="log.matched ? 'is-success' : 'is-danger'">{{ log.matched }}</span>
+                </p>
+            </header>
+            <div class="card-content">
+                <div class="content">
+                    <p class="title">Phrase: "{{ log.user_said }}"</p>
+                    <p class="subtitle">Command Executed: {{ log.command_text }}</p>
+                    <small>Event Execution Time: {{ log.date_created }}</small>
+                    <table class="table" ng-if="log.phrases">
+                        <thead>
+                            <tr>
+                                <th>Phrase</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="(key, val) in log.phrases">
+                                <th>{{ key }} : {{ val }}</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table" ng-if="log.user_said.length" ng-hide="log.matched">
+                        <thead>
+                            <tr>
+                                <th>User Said</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="(key, val) in log.user_said track by $index">
+                                <th>{{ key }} : {{ val }}</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--<div class="card-footer">
+                <a class="card-footer-item">Delete</a>
+            </div>-->
+        </div>
+    </div>
+</div>

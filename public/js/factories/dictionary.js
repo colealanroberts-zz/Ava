@@ -1,4 +1,4 @@
-prox.factory('Dictionary', function() {
+prox.factory('Dictionary', () => {
 
     const self = {
         getSelfReference: () => {

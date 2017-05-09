@@ -10,8 +10,7 @@ process.setMaxListeners(0);
 // serve angular front end files from root path
 app.use('/', express.static('public', { redirect: false }));
 
-Beacon.startScanning('5241444955534e4554574f524b53434f');
-
+Beacon.startScanning('c336aa3854bb483bae753ba707855035');
 
 io.on('connection', (socket) => {
     Beacon.on('discover', (beacon) => {
@@ -23,7 +22,7 @@ io.on('connection', (socket) => {
         }
 
         if (beacon.proximity === "immediate") {
-            console.log('Prox: ' + beacon.proximity);
+            console.log(beacon.proximity, beacon.accuracy);
             socket.emit('trusted_user_entering');
         }
     });

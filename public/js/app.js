@@ -22,6 +22,11 @@ var prox = angular
             templateUrl : 'views/home.html',
             controller  : 'HomeController'
         })
+        .state('diagnostics', {
+            url         : '/diagnostics',
+            templateUrl : 'views/diagnostics.html',
+            controller  : 'DiagnosticsController'
+        });
         $urlRouterProvider.otherwise("/");
         $locationProvider.html5Mode(true);
 });

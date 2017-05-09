@@ -1,7 +1,13 @@
-prox.factory('Prox', function(localStorageService, Dictionary) {
+prox.factory('Prox', (localStorageService, Dictionary, Electric) => {
     const self = {
         speak: (msg) => {
             responsiveVoice.speak(msg);
+        },
+        query_energyConsumption: (energy_type) => {
+            if (energy_type === "electricity") {
+                const consumption = Electric.getTotalConsumption();
+                self.speak("So far you've used" + consumption + "kilowatts this month.");
+            }
         },
         query_localStorageService: (val) => {
             var v = localStorageService.get(val);
@@ -15,10 +21,8 @@ prox.factory('Prox', function(localStorageService, Dictionary) {
         stop: () => {
             responsiveVoice.pause();
         },
-        execute_applianceStateChange: (appliance_obj) => {
+        execute_StateChange: (state, appliance_obj) => {
             const appliance = appliance_obj[0];
-            
-            
 
             if (!appliance.checked) {
                 self.speak(Dictionary.getAcknowledgement() + ". I've turned off the " + appliance.name + ".")
